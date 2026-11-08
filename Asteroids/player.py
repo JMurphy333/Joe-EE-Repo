@@ -36,7 +36,15 @@ class Player(CircleShape):
             self.move(dt)
         if keys[pygame.K_s]:
             self.move(-dt)
+        if keys[pygame.K_q]:
+            self.strafe(-dt)
+        if keys[pygame.K_e]:
+            self.strafe(dt)
 
     def move(self, dt):
             forward = pygame.Vector2(0, 1).rotate(self.rotation)
             self.position += forward * PLAYER_SPEED * dt
+
+    def strafe(self, dt):
+            right = pygame.Vector2(0, 1).rotate(self.rotation + 90)
+            self.position += right * PLAYER_SPEED * dt
